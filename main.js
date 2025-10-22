@@ -123,6 +123,7 @@ async function submitScore() {
     } catch (error) {
         console.error("Failed to submit score:", error);
         ui.setSubmitButtonState(false, 'Submit Score');
+        ui.setReplayButtonState(false, 'Watch Replay');
         alert("There was an error submitting your score. Please try again.");
     }
 }

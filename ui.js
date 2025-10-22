@@ -106,9 +106,7 @@ export class UIManager {
     setSubmitButtonState(disabled, text) {
         this.submitScoreButton.disabled = disabled;
         this.submitScoreButton.textContent = text;
-        if (disabled) {
-            this.submitScoreButton.style.display = 'none';
-        }
+        this.submitScoreButton.style.display = 'block';
     }
 
     showLeaderboard() {
