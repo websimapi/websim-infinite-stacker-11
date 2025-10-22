@@ -140,6 +140,16 @@ function setupEventListeners() {
         onViewReplay: viewReplay,
         onSubmitScore: submitScore,
         onViewLeaderboard: () => ui.showLeaderboard(),
+        onCloseLeaderboard: () => {
+            ui.hideLeaderboard();
+            if (game.getState() !== 'playing') {
+                restart();
+            } else {
+                 // If leaderboard is closed during a game, just hide it.
+                 // This case should ideally be handled better (e.g. pausing)
+                 // but for now we prevent a restart mid-game.
+            }
+        },
         onWindowResize: () => {
             const aspect = window.innerWidth / window.innerHeight;
             const frustumSize = 4;

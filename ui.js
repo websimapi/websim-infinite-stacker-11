@@ -20,7 +20,7 @@ export class UIManager {
         this.currentReplayBlob = null;
     }
 
-    setupEventListeners({ onPointerDown, onRestart, onViewReplay, onWindowResize, onSubmitScore, onViewLeaderboard }) {
+    setupEventListeners({ onPointerDown, onRestart, onViewReplay, onWindowResize, onSubmitScore, onViewLeaderboard, onCloseLeaderboard }) {
         window.addEventListener('pointerdown', onPointerDown);
         this.restartButton.addEventListener('click', onRestart);
         this.replayButton.addEventListener('click', onViewReplay);
@@ -28,7 +28,7 @@ export class UIManager {
         this.downloadReplayButton.addEventListener('click', () => this.downloadReplay());
         this.submitScoreButton.addEventListener('click', onSubmitScore);
         this.leaderboardButton.addEventListener('click', onViewLeaderboard);
-        this.closeLeaderboardButton.addEventListener('click', () => this.hideLeaderboard());
+        this.closeLeaderboardButton.addEventListener('click', onCloseLeaderboard);
         window.addEventListener('resize', onWindowResize, false);
     }
 
