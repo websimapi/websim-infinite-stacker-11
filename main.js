@@ -142,13 +142,13 @@ function setupEventListeners() {
         onViewLeaderboard: () => ui.showLeaderboard(),
         onCloseLeaderboard: () => {
             ui.hideLeaderboard();
-            if (game.getState() !== 'playing') {
+            const gameState = game.getState();
+            if (gameState === 'gameover') {
+                ui.showGameOver(currentScore);
+            } else if (gameState !== 'playing') {
                 restart();
-            } else {
-                 // If leaderboard is closed during a game, just hide it.
-                 // This case should ideally be handled better (e.g. pausing)
-                 // but for now we prevent a restart mid-game.
             }
+            // If game is 'playing', do nothing extra, just hide the leaderboard.
         },
         onWindowResize: () => {
             const aspect = window.innerWidth / window.innerHeight;
